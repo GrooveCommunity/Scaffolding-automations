@@ -1,0 +1,19 @@
+{
+  "name": "scaffolding-automations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrooveCommunity/Scaffolding-automations.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrooveCommunity/Scaffolding-automations/issues"
+  },
+  "homepage": "https://github.com/GrooveCommunity/Scaffolding-automations#readme"
+}
