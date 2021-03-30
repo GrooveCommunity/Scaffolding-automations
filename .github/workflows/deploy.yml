@@ -41,5 +41,5 @@ jobs:
                                    --zip-file fileb://function.zip
                                    --handler index.handler
                                    --runtime nodejs12.x
-                                   --role ${{ secrets.AWS_ROLE }}
-                                   --region ${{ secrets.AWS_REGION }}
+                                   --role "$secrets.AWS_ROLE"
+                                   --region "$secrets.AWS_REGION"
