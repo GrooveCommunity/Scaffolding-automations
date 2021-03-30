@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: '12'
         
-    - nun: npm install
+    - run: npm install
     - run: npm run build        
 
     - name: Zip Code to Deploy
