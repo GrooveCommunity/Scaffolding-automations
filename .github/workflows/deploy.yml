@@ -1,0 +1,43 @@
+on:
+  release:
+    types: [created]
+
+name: Deploy lambda function scaffolding-automations to AWS
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Build app ts 2 js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '12'
+      nun: npm install
+      run: npm run build        
+
+    - name: Zip Code to Deploy
+      uses: papeloto/action-zip@v1
+      with:
+        files: dist/index.js
+        dest: function.zip
+
+    - name: Deploy lambda function
+      run: >
+        aws lambda create-function --function-name scaffolding-automations
+                                   --zip-file fileb://function.zip
+                                   --handler index.handler
+                                   --runtime nodejs12.x
+                                   --role arn:aws:iam::139012737147:role/action-lambda
