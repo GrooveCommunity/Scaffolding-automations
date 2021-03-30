@@ -36,10 +36,4 @@ jobs:
         dest: function.zip
 
     - name: Deploy lambda function
-      run: >
-        aws lambda create-function --function-name scaffolding-automations
-                                   --zip-file fileb://function.zip
-                                   --handler index.handler
-                                   --runtime nodejs12.x
-                                   --role "$secrets.AWS_ROLE"
-                                   --region "$secrets.AWS_REGION"
+      run: aws lambda create-function --function-name scaffolding-automations --zip-file fileb://function.zip --handler index.handler --runtime nodejs12.x --role ${{ secrets.AWS_ROLE }} --region ${{ secrets.AWS_REGION }}
