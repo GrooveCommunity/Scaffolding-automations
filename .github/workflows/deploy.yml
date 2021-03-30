@@ -41,4 +41,5 @@ jobs:
                                    --zip-file fileb://function.zip
                                    --handler index.handler
                                    --runtime nodejs12.x
-                                   --role arn:aws:iam::139012737147:role/action-lambda
+                                   --role ${{ secrets.AWS_ROLE }}
+                                   --region ${{ secrets.AWS_REGION }}
