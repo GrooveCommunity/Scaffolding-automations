@@ -25,8 +25,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '12'
-      nun: npm install
-      run: npm run build        
+        
+    - nun: npm install
+    - run: npm run build        
 
     - name: Zip Code to Deploy
       uses: papeloto/action-zip@v1
