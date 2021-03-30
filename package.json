@@ -10,7 +10,19 @@
     "type": "git",
     "url": "git+https://github.com/GrooveCommunity/Scaffolding-automations.git"
   },
-  "author": "",
+  "contributors": [
+    {
+      "email": "coder.marcos@gmail.com",
+      "name": "codermarcos",
+      "url": "https://github.com/codermarcos"
+    },
+    {
+      "name": "RodCas"
+    },
+    {
+      "name": "dejair-groove"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GrooveCommunity/Scaffolding-automations/issues"
