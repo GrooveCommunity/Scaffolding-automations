@@ -32,4 +32,4 @@ jobs:
     - name: Deploy lambda function
       uses: hashicorp/setup-terraform@v1
     
-    - run: terraform apply --auto-approve
+    - run: terraform apply --auto-approve 
