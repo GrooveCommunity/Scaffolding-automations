@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "build-watch": "tsc --watch",
+    "start": "concurrently \"npm:build-watch\" \"npm:start-serve\" ",
+    "start-serve": "lambda-local -l ./dist/index.js -h handler --watch 9000 -v 3"
   },
   "repository": {
     "type": "git",
@@ -31,6 +34,8 @@
   "dependencies": {},
   "devDependencies": {
     "@types/aws-lambda": "^8.10.73",
+    "concurrently": "^6.0.0",
+    "lambda-local": "^1.7.4",
     "typescript": "^4.2.3"
   }
 }
