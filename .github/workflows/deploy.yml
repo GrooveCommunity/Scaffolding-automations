@@ -27,13 +27,9 @@ jobs:
         node-version: '12'
         
     - run: npm install
-    - run: npm run build        
-
-    - name: Zip Code to Deploy
-      uses: papeloto/action-zip@v1
-      with:
-        files: dist/index.js
-        dest: function.zip
+    - run: npm run build      
 
     - name: Deploy lambda function
-      run: aws lambda create-function --function-name scaffolding-automations --zip-file fileb://function.zip --handler index.handler --runtime nodejs12.x --role ${{ secrets.AWS_ROLE }} --region ${{ secrets.AWS_REGION }}
+      uses: hashicorp/setup-terraform@v1
+    
+    - run: terraform apply --auto-approve 
