@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "139012737147-us-east-1-tfstate"
+    bucket = "<%= bucketName %>"
     key    = "<%= name %>"
-    region = "us-east-1"
+    region = "<%= bucketRegion %>"
   }
 }
 
@@ -28,7 +28,7 @@ variable "project_description" {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "<%= region %>"
 }
 
 resource "null_resource" "build" {

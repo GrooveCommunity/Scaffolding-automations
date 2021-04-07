@@ -4,6 +4,7 @@
 
 ## About
 
+This generator creates lambda functions with HTTP triggers on AWS using yeoman.
 
 
 ## Installation

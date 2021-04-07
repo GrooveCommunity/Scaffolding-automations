@@ -66,6 +66,57 @@ module.exports = class extends Generator {
         );
     }
 
+    const awsQuestions = () => {
+      const questions = [
+        {
+          type: 'input',
+          name: 'region',
+          message: 'AWS region:',
+        },
+      ];
+
+      this.log('Answer some questions about aws lambda account:');
+
+      return this
+        .prompt(questions)
+        .then(
+          (aws) => {
+            this.props = { ...this.props, ...aws };
+          },
+        )
+        .finally(
+          () => lambdaQuestions(),
+        );
+    }
+
+    const awsTerraformQuestions = () => {
+      const questions = [
+        {
+          type: 'input',
+          name: 'bucketRegion',
+          message: 'AWS region:',
+        },
+        {
+          type: 'input',
+          name: 'bucketName',
+          message: 'AWS bucket name:',
+        },
+      ];
+
+      this.log('Answer some questions about terraform backend to store tfstate:');
+
+      return this
+        .prompt(questions)
+        .then(
+          (aws) => {
+            this.props = { ...this.props, ...aws };
+          },
+        )
+        .finally(
+          () => awsQuestions(),
+        );
+    }
+
     const allQuestions = () => {
       const questions = [
         {
@@ -88,13 +139,15 @@ module.exports = class extends Generator {
         },
       ];
 
+      this.log('Answer some questions about the project:');
+
       return this
         .prompt(questions)
         .then(
           props => this.props = props,
         )
         .finally(
-          () => lambdaQuestions(),
+          () => awsTerraformQuestions(),
         );
 
     }
@@ -148,5 +201,8 @@ module.exports = class extends Generator {
 
   end() {
     this.spawnCommandSync('git', ['init']);
+    this.spawnCommandSync('git', ['remote', 'add', 'origin', `https://github.com/${this.props.owner}/${this.props.name}.git`]);
+
+    this.log(`Remember to create a repository with the name ${chalk.green(this.props.name)} in the account ${chalk.green(this.props.owner)}:`);
   }
 };
