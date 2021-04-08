@@ -202,6 +202,7 @@ module.exports = class extends Generator {
   end() {
     this.spawnCommandSync('git', ['init']);
     this.spawnCommandSync('git', ['remote', 'add', 'origin', `https://github.com/${this.props.owner}/${this.props.name}.git`]);
+    this.spawnCommandSync('git', ['add', '.']);
 
     this.log(`Remember to create a repository with the name ${chalk.green(this.props.name)} in the account ${chalk.green(this.props.owner)}:`);
   }
