@@ -5,6 +5,7 @@
     "tsconfig.json",
     ".gitignore",
     ".github/workflows/deploy.yml",
+    "README.md",
     "main.tf"
   ]
 }
