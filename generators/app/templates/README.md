@@ -3,7 +3,11 @@
 This project was generated with [generator-lambda-node]()
 
 > :warning: **Attention**: Remember to create the repository with the name "<%= name %>" and define the necessary secrets as you can see [here](#define-secrets-to-aws).
+## Firsts steps
 
+1. Create the repository "<%= name %>"
+2. Commit this files with ```git commit -m "your first commit message"```
+3. git push -u origin HEAD
 
 ## Define secrets to AWS
 
