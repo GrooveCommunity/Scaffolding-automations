@@ -15,6 +15,24 @@ First, install [Yeoman](http://yeoman.io) and generator-lambda-node using [npm](
 npm install -g yo
 npm install -g generator-lambda-node
 ```
+## Or if this package not deployed 
+
+```bash
+git clone git@github.com:GrooveCommunity/generator-lambda-node.git
+```
+
+Enter in repository
+
+```bash
+cd generator-lambda-node
+```
+
+And install localy
+
+```bash
+npm link
+```
+
 
 Then generate your new project:
 
