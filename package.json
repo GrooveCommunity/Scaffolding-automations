@@ -1,18 +1,8 @@
 {
-  "name": "scaffolding-automations",
+  "name": "generator-lambda-node",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.ts",
-  "scripts": {
-    "build": "tsc",
-    "build-watch": "tsc --watch",
-    "start": "concurrently \"npm:build-watch\" \"npm:start-serve\" ",
-    "start-serve": "lambda-local -l ./dist/index.js -h handler --watch 9000 -v 3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GrooveCommunity/Scaffolding-automations.git"
-  },
+  "description": "This generate a project Serveless Node to Deploy at AWS Lambda with trigger HTTP",
+  "homepage": "https://github.com/GrooveCommunity/Scaffolding-automations#readme",
   "contributors": [
     {
       "email": "coder.marcos@gmail.com",
@@ -26,16 +16,76 @@
       "name": "dejair-groove"
     }
   ],
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/GrooveCommunity/Scaffolding-automations/issues"
-  },
-  "homepage": "https://github.com/GrooveCommunity/Scaffolding-automations#readme",
-  "dependencies": {},
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "aws-lambda-function",
+    "yeoman-generator",
+    "aws-lambda",
+    "lambda",
+    "aws"
+  ],
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.73",
-    "concurrently": "^6.0.0",
-    "lambda-local": "^1.7.4",
-    "typescript": "^4.2.3"
-  }
+    "yeoman-test": "^1.7.0",
+    "yeoman-assert": "^3.1.1",
+    "coveralls": "^3.0.7",
+    "eslint": "^6.6.0",
+    "prettier": "^1.19.1",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.3",
+    "eslint-config-prettier": "^6.6.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-config-xo": "^0.27.2",
+    "jest": "^26.1.0"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
+  },
+  "dependencies": {
+    "yeoman-generator": "^3.1.1",
+    "chalk": "^2.1.0",
+    "yosay": "^2.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "xo",
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": "error"
+    },
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "scripts": {
+    "pretest": "eslint .",
+    "test": "jest"
+  },
+  "repository": "codermarcos/generator-lambda-node",
+  "license": "Apache-2.0"
 }

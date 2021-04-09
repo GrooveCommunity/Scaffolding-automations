@@ -137,6 +137,3 @@ terraform.rc
 # Lambda directories
 builds/
 __pycache__/
-
-node_modules
-coverage
